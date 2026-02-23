@@ -195,8 +195,7 @@ const QuoteFormPopover = () => {
             await emailjs.send(
                 process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
                 process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-                emailParams,
-                process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+                emailParams
             );
 
             setSubmissionStatus('success');

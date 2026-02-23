@@ -7,7 +7,7 @@ const requestMap = new Map<string, { count: number; resetTime: number }>();
 const RATE_LIMIT_WINDOW = 60; // 1 minute
 const RATE_LIMIT_MAX = 100; // Max requests per window for general routes
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Skip rate limiting for static assets

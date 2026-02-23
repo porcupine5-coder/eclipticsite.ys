@@ -1,0 +1,16 @@
+#lights,
+.hyperspeed-container {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  /* Remove z-index here to inherit from parent container */
+}
+
+#lights canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  /* Ensure canvas doesn't have its own stacking context conflicts */
+}

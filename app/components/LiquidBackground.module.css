@@ -1,0 +1,101 @@
+/* Liquid Background Container */
+.liquidContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    /* Z-index controlled by parent container */
+    background: transparent;
+    /* Transparent base - blobs provide the color */
+}
+
+/* Common Blob Styles */
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.95;
+    animation: float 20s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Individual Blobs */
+.blob1 {
+    top: -10%;
+    left: -10%;
+    width: 50vw;
+    height: 50vw;
+    background: #e0e7ff;
+    /* Indigo-100 */
+    animation-duration: 25s;
+    opacity: 0.92;
+}
+
+.blob2 {
+    bottom: -10%;
+    right: -10%;
+    width: 60vw;
+    height: 60vw;
+    background: #fae8ff;
+    /* Fuchsia-100 */
+    animation-duration: 30s;
+    animation-direction: alternate-reverse;
+    opacity: 0.96;
+}
+
+.blob3 {
+    top: 40%;
+    left: 40%;
+    width: 40vw;
+    height: 40vw;
+    background: #dbeafe;
+    /* Blue-100 */
+    animation-duration: 22s;
+    transform: translate(-50%, -50%);
+    opacity: 0.94;
+}
+
+.blob4 {
+    bottom: 20%;
+    left: 10%;
+    width: 30vw;
+    height: 30vw;
+    background: #ccfbf1;
+    /* Teal-100 */
+    animation-duration: 28s;
+    opacity: 0.92;
+}
+
+/* Dark mode palette: pure black background, hide colorful blobs */
+[data-theme="dark"] .liquidContainer {
+    background: #000000;
+    /* Pure black background for hyperspeed visibility */
+}
+
+[data-theme="dark"] .blob1,
+[data-theme="dark"] .blob2,
+[data-theme="dark"] .blob3,
+[data-theme="dark"] .blob4 {
+    opacity: 0;
+    /* Hide colorful blobs in dark mode */
+}
+
+/* Animation Keyframes */
+@keyframes float {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    33% {
+        transform: translate(50px, -50px) scale(1.1);
+    }
+
+    66% {
+        transform: translate(-30px, 30px) scale(0.9);
+    }
+
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+}

@@ -1,0 +1,72 @@
+.text-type {
+  display: inline;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+.text-type__content {
+  display: inline;
+  background: linear-gradient(120deg, #1F2937, #374151, #4B5563);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+  animation: gradient-shift 3s ease infinite;
+  font-weight: 800;
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 100% center;
+  }
+}
+
+[data-theme="dark"] .text-type__content {
+  background: linear-gradient(120deg, #E5E7EB, #D1D5DB, #F3F4F6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+}
+
+.text-type__cursor {
+  margin-left: 0.25rem;
+  display: inline-block;
+  opacity: 1;
+  font-weight: inherit;
+  animation: none;
+  background: linear-gradient(120deg, #374151, #4B5563);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-type__cursor--hidden {
+  display: none;
+}
+
+/* Hero Section Integration */
+.hero-title .text-type {
+  display: inline;
+}
+
+.hero-title .text-type__cursor {
+  background: linear-gradient(120deg, #374151, #4B5563);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme="dark"] .hero-title .text-type__cursor {
+  background: linear-gradient(120deg, #D1D5DB, #E5E7EB);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-title-typing {
+  display: inline;
+}

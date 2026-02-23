@@ -34,3 +34,31 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Contact Form To Gmail
+
+This project now sends contact form submissions through `POST /api/contact` using Gmail SMTP.
+
+1. Install the new dependency:
+
+```bash
+npm install
+```
+
+2. Create `eclipticsite/.env.local` and add:
+
+```env
+GMAIL_USER=your_gmail_address@gmail.com
+GMAIL_APP_PASSWORD=your_16_character_gmail_app_password
+CONTACT_RECIPIENT_EMAIL=your_gmail_address@gmail.com
+```
+
+3. In your Google account, enable 2-Step Verification and generate an App Password.
+
+4. Start the app:
+
+```bash
+npm run dev
+```
+
+When the contact form is submitted from the site, the message will be delivered to `CONTACT_RECIPIENT_EMAIL` (or `GMAIL_USER` if recipient is not set).

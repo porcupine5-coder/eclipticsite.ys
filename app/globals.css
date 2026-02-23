@@ -1,5 +1,5 @@
-@import './main.css';
-@import './animations.css';
+@import '../styles/main.css';
+@import '../styles/animations.css';
 
 @tailwind base;
 @tailwind components;

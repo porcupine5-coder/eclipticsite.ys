@@ -6,31 +6,16 @@
 .pricing-card {
   perspective: 1000px;
   transform-style: preserve-3d;
-  transition: transform 0.3s ease-out;
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.320, 1),
+              box-shadow 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+/* Premium smooth easing for service cards */
+.service-card {
+  will-change: transform, box-shadow;
 }
 
 /* Text animation classes */
-.hero-content h1 {
-  background: -webkit-linear-gradient(
-    45deg,
-    #6366F1,
-    #EC4899
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
-  animation: gradientShift 6s ease infinite;
-}
-
-@keyframes gradientShift {
-  0%, 100% {
-    background-image: linear-gradient(45deg, #6366F1, #EC4899);
-  }
-  50% {
-    background-image: linear-gradient(45deg, #EC4899, #F59E0B);
-  }
-}
 
 /* Glow effect */
 .glow {

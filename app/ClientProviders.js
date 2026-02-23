@@ -29,7 +29,7 @@ export default function ClientProviders({ children }) {
         if (typeof window !== 'undefined') {
             // Initialize EmailJS
             emailjs.init({
-                publicKey: env.local.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
+                publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
             });
 
             // Initialize Core Logic

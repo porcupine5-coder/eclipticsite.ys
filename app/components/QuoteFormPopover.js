@@ -4,7 +4,6 @@ import { useState, useRef, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import gsap from 'gsap';
-import emailjs from '@emailjs/browser';
 import CyberpunkAlert from './CyberpunkAlert';
 
 // Allowed file types for upload
@@ -181,22 +180,24 @@ const QuoteFormPopover = () => {
         setIsSubmitting(true);
 
         try {
-            const emailParams = {
-                to_email: 'ytsshrts@gmail.com',
-                from_name: formData.name,
-                from_email: formData.email,
-                package_type: formData.packageType,
-                budget: formData.budget,
-                timeline: formData.timeline ? formData.timeline.toLocaleDateString() : 'Not specified',
-                requirements: formData.requirements,
-                attachment_name: formData.files ? formData.files.name : 'No file attached',
-            };
+            const response = await fetch('/api/quote', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: formData.name,
+                    email: formData.email,
+                    packageType: formData.packageType,
+                    budget: formData.budget,
+                    timeline: formData.timeline ? formData.timeline.toISOString() : '',
+                    requirements: formData.requirements,
+                    attachmentName: formData.files ? formData.files.name : '',
+                }),
+            });
 
-            await emailjs.send(
-                process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-                process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-                emailParams
-            );
+            const result = await response.json().catch(() => ({}));
+            if (!response.ok) {
+                throw new Error(result.error || 'Failed to send quote request.');
+            }
 
             setSubmissionStatus('success');
 
@@ -208,8 +209,7 @@ const QuoteFormPopover = () => {
         } catch (error) {
             console.error('Submission error:', error);
             setSubmissionStatus('error');
-            // Generic error message - don't expose internal details
-            alert('Failed to send. Please try again later.');
+            alert(error?.message || 'Failed to send. Please try again later.');
         } finally {
             setIsSubmitting(false);
         }

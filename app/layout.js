@@ -1,5 +1,6 @@
 import './globals.css';
 import ClientProviders from './ClientProviders';
+import { Analytics } from '@vercel/analytics/next';
 
 export const metadata = {
   title: 'Eclipticsite | Modern E-commerce Solutions',
@@ -36,6 +37,7 @@ export default function RootLayout({ children }) {
         <ClientProviders>
           {children}
         </ClientProviders>
+        <Analytics />
       </body>
     </html>
   );
